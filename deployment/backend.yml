@@ -61,3 +61,20 @@ pipelines:
                       - -l
                     command: ls
                     run_if: passed
+
+      - PROD:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: false
+          approval:
+            type: success
+            allow_only_on_success: false
+          jobs:
+            test-j:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -l
+                    command: ls
+                    run_if: passed
