@@ -20,6 +20,7 @@ pipelines:
           fetch_materials: true
           environment_variables:
             env: dev
+            component: mysql
           clean_workspace: false
           jobs:
             ansible:
