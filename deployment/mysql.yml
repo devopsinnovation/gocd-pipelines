@@ -15,7 +15,6 @@ pipelines:
       SSH_PASSWORD: "AES:wJk5SnANwziiODQn0pQ+5w==:/3h6jTM7npcDj85x8PAk+w=="
     environment_variables:
       component: mysql
-
     stages:
       - DEV:
           fetch_materials: true
