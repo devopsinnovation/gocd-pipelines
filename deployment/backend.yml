@@ -22,7 +22,7 @@ pipelines:
                 - exec:
                     arguments:
                       - -i
-                      - backend-dev.devopsinnovation.online
+                      - backend-dev.devopsinnovation.online,
                       - -e
                       - ansible_user=ec2-user
                       - -e
