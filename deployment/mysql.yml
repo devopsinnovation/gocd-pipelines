@@ -11,9 +11,15 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: main
+        secure_variables:
+          SSH_PASSWORD: "AES:KaiVssqD/akeUFTZ51l2lw==:tRG3Xs0o7Pp0nKbBX1supQ=="
+        environment_variables:
+          component: mysql
     stages:
       - DEV:
           fetch_materials: true
+          environment_variables:
+            env: dev
           clean_workspace: false
           jobs:
             ansible:
