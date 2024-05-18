@@ -7,7 +7,7 @@ pipelines:
     display_order: -1
     materials:
       git-68ec9f0:
-        git: https://github.com/devopsinnovation/ansible-expense
+        git: https://github.com/devopsinnovation/ansible-expense-dry-code
         shallow_clone: true
         auto_update: true
         branch: main
