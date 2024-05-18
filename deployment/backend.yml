@@ -29,6 +29,7 @@ pipelines:
                       - ansible_password=DevOps321
                       - -e
                       - env=dev
+                      - -e
                       - role_name=backend
                       - expense.yml
                     command: ansible-playbook
