@@ -11,10 +11,6 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: main
-    environment_variables:
-      SSH_PASSWORD:
-        secure: "AES:KaiVssqD/akeUFTZ51l2lw==:tRG3Xs0o7Pp0nKbBX1supQ=="
-
     stages:
       - DEV:
           fetch_materials: true
@@ -25,18 +21,8 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - -i
-                      - mysql-dev.devopsinnovation.online,
-                      - -e
-                      - ansible_user=ec2-user
-                      - -e
-                      - ansible_password="${SSH_PASSWORD}"
-                      - -e
-                      - env=dev
-                      - -e
-                      - role_name=mysql
-                      - expense.yml
-                    command: ansible-playbook
+                      - run.sh
+                    command: bash
 
       - QA:
           fetch_materials: true
