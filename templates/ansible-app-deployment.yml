@@ -21,6 +21,7 @@ pipelines:
           environment_variables:
             env: dev
             component: backend
+            pipeline: true
           clean_workspace: false
           jobs:
             ansible:
