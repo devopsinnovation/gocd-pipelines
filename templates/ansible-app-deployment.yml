@@ -1,0 +1,72 @@
+format_version: 10
+pipelines:
+  ansible-app-deployment:
+    group: Templates
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-68ec9f0:
+        git: https://github.com/devopsinnovation/ansible-expense-dry-code
+        shallow_clone: true
+        auto_update: true
+        branch: main
+    secure_variables:
+      SSH_PASSWORD: "AES:wJk5SnANwziiODQn0pQ+5w==:/3h6jTM7npcDj85x8PAk+w=="
+    environment_variables:
+      component: ansible-app-deployment
+    stages:
+      - DEV:
+          fetch_materials: true
+          environment_variables:
+            env: dev
+            component: backend
+          clean_workspace: false
+          jobs:
+            ansible:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - run.sh
+                    command: bash
+
+      - QA:
+          fetch_materials: true
+          clean_workspace: false
+          approval:
+            type: manual
+          jobs:
+            ansible:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -l
+                    command: ls
+                    run_if: passed
+
+      - STAGE:
+          fetch_materials: true
+          clean_workspace: false
+          jobs:
+            ansible:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -l
+                    command: ls
+                    run_if: passed
+      - PROD:
+          fetch_materials: true
+          clean_workspace: false
+          jobs:
+            ansible:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -l
+                    command: ls
+                    run_if: passed
