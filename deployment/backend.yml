@@ -11,9 +11,16 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: main
+    secure_variables:
+      SSH_PASSWORD: "AES:wJk5SnANwziiODQn0pQ+5w==:/3h6jTM7npcDj85x8PAk+w=="
+    environment_variables:
+      component: backend
     stages:
       - DEV:
           fetch_materials: true
+          environment_variables:
+            env: dev
+            component: backend
           clean_workspace: false
           jobs:
             ansible:
@@ -21,18 +28,8 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                    - -i
-                    - backend-dev.devopsinnovation.online,
-                    - -e
-                    - ansible_user=ec2-user
-                    - -e
-                    - ansible_password=DevOps321
-                    - -e
-                    - env=dev
-                    - -e
-                    - role_name=backend
-                    - expense.yml
-                    command: ansible-playbook
+                      - run.sh
+                    command: bash
 
       - QA:
           fetch_materials: true
