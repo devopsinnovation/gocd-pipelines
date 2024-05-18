@@ -11,10 +11,11 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: main
-        secure_variables:
-          SSH_PASSWORD: "AES:wJk5SnANwziiODQn0pQ+5w==:/3h6jTM7npcDj85x8PAk+w=="
-        environment_variables:
-          component: mysql
+    secure_variables:
+      SSH_PASSWORD: "AES:wJk5SnANwziiODQn0pQ+5w==:/3h6jTM7npcDj85x8PAk+w=="
+    environment_variables:
+      component: mysql
+
     stages:
       - DEV:
           fetch_materials: true
