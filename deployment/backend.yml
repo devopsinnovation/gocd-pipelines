@@ -28,6 +28,8 @@ pipelines:
       - QA:
           fetch_materials: true
           clean_workspace: false
+          approval:
+            type: manual
           jobs:
             ansible:
               timeout: 0
