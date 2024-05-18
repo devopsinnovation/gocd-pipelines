@@ -21,19 +21,18 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - -i
-                      - backend-dev.devopsinnovation.online,
-                      - -e
-                      - ansible_user=ec2-user
-                      - -e
-                      - ansible_password=DevOps321
-                      - -e
-                      - env=dev
-                      - -e
-                      - role_name=backend
-                      - expense.yml
+                    - -i
+                    - backend-dev.devopsinnovation.online,
+                    - -e
+                    - ansible_user=ec2-user
+                    - -e
+                    - ansible_password=DevOps321
+                    - -e
+                    - env=dev
+                    - -e
+                    - role_name=backend
+                    - expense.yml
                     command: ansible-playbook
-                    run_if: passed
 
       - QA:
           fetch_materials: true
