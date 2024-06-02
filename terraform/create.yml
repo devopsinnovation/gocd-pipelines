@@ -24,18 +24,9 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: terraform
-                    arguments:
-                      - init
-                      - -backend-config
-                      - env-dev/state.tfvars
+                    command: { terraform, arguments: [ "init", "-backend-config", "env-dev/state.tfvars" ]  }
                 - exec:
-                    command: terraform
-                    arguments:
-                      - apply
-                      - -var-file
-                      - env-dev/main.tfvars
-                      - -auto-approve
+                    command: { terraform, arguments: [ "apply", "-var-file", "env-dev/state.tfvars", "-auto-approve" ]  }
       - PROD:
           fetch_materials: true
           environment_variables:
@@ -48,15 +39,6 @@ pipelines:
               timeout: 0
               tasks:
                 - exec:
-                    command: terraform
-                    arguments:
-                      - init
-                      - -backend-config
-                      - env-prod/state.tfvars
+                    command: { terraform, arguments: [ "init", "-backend-config", "env-prod/state.tfvars" ]  }
                 - exec:
-                    command: terraform
-                    arguments:
-                      - apply
-                      - -var-file
-                      - env-prod/main.tfvars
-                      - -auto-approve
+                    command: { terraform, arguments: [ "apply", "-var-file", "env-prod/state.tfvars", "-auto-approve" ]  }
